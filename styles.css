@@ -1,0 +1,247 @@
+/* ===================================
+   Rabeens Technologies - Custom Styles
+   =================================== */
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Scroll-triggered animation base state */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Smooth scrollbar */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #475569;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* Header scroll state */
+#header.scrolled {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+}
+
+.dark #header.scrolled {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Focus styles for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #3390ff;
+    outline-offset: 2px;
+    border-radius: 8px;
+}
+
+/* Service card hover lift */
+article.group:hover {
+    transform: translateY(-4px);
+}
+
+/* Modal animation */
+#consultants-modal .relative > div {
+    animation: scaleIn 0.3s ease-out;
+}
+
+/* Contact form input transitions */
+input, textarea {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Mobile menu animation */
+#mobile-menu {
+    animation: slideDown 0.3s ease-out;
+}
+
+/* Gradient text animation on hover */
+.bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+/* Subtle hover animations for nav links */
+.nav-link {
+    position: relative;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #3390ff, #22c55e);
+    border-radius: 1px;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 60%;
+}
+
+/* Card shimmer effect on hover */
+article.group::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.05),
+        transparent
+    );
+    transition: left 0.5s ease;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+article.group:hover::before {
+    left: 100%;
+}
+
+/* Stats counter animation */
+.stat-number {
+    display: inline-block;
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 640px) {
+    .font-display {
+        letter-spacing: -0.02em;
+    }
+}
+
+/* Print styles */
+@media print {
+    header, footer, #booking, #consultants-modal {
+        display: none !important;
+    }
+    
+    body {
+        color: #000 !important;
+        background: #fff !important;
+    }
+    
+    section {
+        page-break-inside: avoid;
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .animate-on-scroll {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .animate-float,
+    .animate-pulse-slow {
+        animation: none;
+    }
+    
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Selection color */
+::selection {
+    background: rgba(51, 144, 255, 0.2);
+    color: inherit;
+}
+
+.dark ::selection {
+    background: rgba(51, 144, 255, 0.3);
+}
